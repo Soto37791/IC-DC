@@ -1,0 +1,22 @@
+{
+    "name": "manuel/unittesting",
+    "description": "probando unit testing",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "11.5.x-dev"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Manuel\\Unittesting\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Manuel Soto",
+            "email": "manuel.soto@example.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,0 +1,1 @@
+{"version":1,"defects":{"MathOperationsTest::testMultiply":8,"MathOperationsTest::testDivide":7,"CalculadoraTest::testPotencia":7},"times":{"MathOperationsTest::testMultiply":0.67,"MathOperationsTest::testDivide":0.087,"CalculadoraTest::testSResta":0.003,"CalculadoraTest::testPotencia":0.001}}
