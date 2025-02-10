@@ -26,6 +26,10 @@ jobs:
           composer install --no-progress --no-suggest
           composer dump-autoload
 
+      - name: Asegurar permisos de ejecución
+        run: chmod +x vendor/bin/phpunit
+
+
       - name: Ejecutar pruebas unitarias
         run: vendor/bin/phpunit tests/
 
