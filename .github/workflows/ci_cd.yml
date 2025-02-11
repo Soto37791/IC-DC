@@ -1,4 +1,4 @@
-name: CI/CD para PHP con XAMPP
+name: CI/CD para PHP con XAMPP (Local con Ngrok)
 
 on:
   push:
@@ -29,7 +29,6 @@ jobs:
       - name: Asegurar permisos de ejecución
         run: chmod +x vendor/bin/phpunit
 
-
       - name: Ejecutar pruebas unitarias
         run: vendor/bin/phpunit tests/
 
@@ -39,21 +38,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Clonar el repositorio
-        uses: actions/checkout@v4
-
-      - name: Configurar SSH
+      - name: Disparar despliegue en el servidor local (Ngrok)
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github_ci_cd_key
-          chmod 600 ~/.ssh/github_ci_cd_key
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
-      - name: Subir archivos al servidor XAMPP
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
-          target: "C:/xampp/htdocs/UnitTesting"
+          curl -X POST https://5acf-190-143-252-247.ngrok-free.app/deploy
