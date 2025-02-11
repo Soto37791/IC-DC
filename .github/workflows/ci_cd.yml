@@ -1,0 +1,43 @@
+name: CI/CD para PHP con XAMPP (Local con Ngrok)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2.12'
+
+      - name: Instalar dependencias
+        run: |
+          composer install --no-progress --no-suggest
+          composer dump-autoload
+
+      - name: Asegurar permisos de ejecución
+        run: chmod +x vendor/bin/phpunit
+
+      - name: Ejecutar pruebas unitarias
+        run: vendor/bin/phpunit tests/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Disparar despliegue en el servidor local (Ngrok)
+        run: |
+          curl -X POST https://5acf-190-143-252-247.ngrok-free.app/deploy
