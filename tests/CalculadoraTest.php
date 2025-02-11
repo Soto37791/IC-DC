@@ -14,4 +14,4 @@ class CalculadoraTest extends TestCase{
         $this->expectException(\InvalidArgumentException::class);
         $Calculadora->Potencia(0,2);
     }
-}
+} //este comentario indicará la diferencia
