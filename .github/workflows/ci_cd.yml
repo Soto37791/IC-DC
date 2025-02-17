@@ -40,4 +40,4 @@ jobs:
     steps:
       - name: Disparar despliegue en el servidor local (Ngrok)
         run: |
-          curl -X POST https://5acf-190-143-252-247.ngrok-free.app/deploy
+          curl -X POST https://5acf-190-143-252-247.ngrok-free.app/deploy.php
