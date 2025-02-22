@@ -5,7 +5,7 @@ use Manuel\Unittesting\Calculadora;
 class CalculadoraTest extends TestCase{
     public function testSResta(){
         $Calculadora = new Calculadora();
-        $this->assertEquals(2,$Calculadora->Resta(10,8));
+        $this->assertEquals(3,$Calculadora->Resta(10,8));
     }
 
     public function testPotencia(){
@@ -17,3 +17,7 @@ class CalculadoraTest extends TestCase{
 } //este comentario indicará la diferencia
 // que pasaaa!!!!     kfkfk llllklklkllll
 /*kkkkkkk*/
+
+
+/*este cambio no debe de aparecer en las carpetas del xampp del proyecto corriendo ya que 
+no esta correcta una de las pruebas unitarias entonces no deberia de dar pase y actualizar con el workflows de git */
